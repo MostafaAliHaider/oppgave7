@@ -1,23 +1,15 @@
 
 
-const Movies = ({movies, setMovies, search}) => {
+const Movies = ({id, title, poster, year, type}) => {
 
-    const key = "80a2f1ef";
-    const url = "http://www.omdbapi.com/?apikey=80a2f1ef&s="
-
-    const handleClick = async () => {
-    const response = await fetch( `${url}${search}`);
-        const data = await response.json();
-        if(response.ok){
-            setMovies(data.Search)
-        }
-        
-    }
+   
     return(
     <>
-    <h1>Movies</h1>
-    
-    <button type="button" onClick={handleClick}>I want to see some movies</button>
+    <article>
+        <h3>{title}</h3>
+        <p> {type} {year}</p>
+        <img src = {poster} alt="sorry"></img>
+    </article>
     </>
     )
 }
