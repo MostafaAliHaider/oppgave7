@@ -10,12 +10,16 @@ const Main = () => {
 
     const [search, setSearch] = useState ("Star Wars")
     const [movies, setMovies] = useState ([])
+    const [limit, setLimit] = useState(true)
 
     const handleClick = async () => {
         const response = await fetch( `${url}${search}`);
             const data = await response.json();
-            if(response.ok){
-                setMovies(data.Search)
+            if(limit){
+                setMovies(data?.Search.slice(0,5))
+                setLimit(false);
+            } else {
+                setMovies(data?.Search)
             }
             
         }
